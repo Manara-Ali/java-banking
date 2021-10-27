@@ -5,6 +5,8 @@ import com.manara.ali.javabanking.repository.CustomerModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
 
@@ -15,5 +17,10 @@ public class CustomerService {
     // Create a method to sign up new customer
     public CustomerModel signup(CustomerModel customerModel) {
         return customerModelRepository.save(customerModel);
+    }
+
+    // Create a method to retrieve all customers
+    public List<CustomerModel> getAllCustomers() {
+        return customerModelRepository.findAll();
     }
 }
