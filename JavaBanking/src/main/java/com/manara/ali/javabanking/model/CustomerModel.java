@@ -3,7 +3,7 @@ package com.manara.ali.javabanking.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="cutomers")
+@Table(name="customers")
 public class CustomerModel {
 
     // Instance variables
