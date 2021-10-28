@@ -45,4 +45,10 @@ public class CustomerController {
         return customerService.deleteCustomer(id);
     }
 
+    // Find customers using there username
+    @GetMapping("/login")
+    public List<CustomerModel> findByUsername(@RequestBody CustomerModel username) {
+        return customerService.findByUsername(username);
+    }
+
 }

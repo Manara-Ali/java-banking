@@ -49,4 +49,34 @@ public class CustomerService {
         customerModelRepository.deleteById(id);
         return HttpStatus.OK;
     }
+
+    // Create a method to find customer by username
+    public List<CustomerModel> findByUsername(CustomerModel obj) {
+        // Retrieve all customers
+        List <CustomerModel> customers = getAllCustomers();
+
+        // Create an instance of the CustomerModel
+        CustomerModel customer = null;
+
+        String message = "";
+
+        // Find the specific customer
+        for(int i = 0; i < customers.size(); i++) {
+            // If there is a customer that matches that username retrieve the entire customer object
+            if(customers.get(i).getUsername().equals(obj.getUsername()) &&
+                    customers.get(i).getPassword().equals(obj.getPassword())) {
+                customer = customers.get(i);
+            }
+        }
+
+        if(customer == null) {
+            message += "Invalid username or password. Try again.";
+            System.out.println(message);
+            return null;
+        } else {
+            message += "Welcome, " + customer.getFirstname() + " " + customer.getLastname() + "!";
+            System.out.println(message);
+            return customerModelRepository.findByUsername(customer.getUsername());
+        }
+    }
 }
